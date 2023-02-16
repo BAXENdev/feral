@@ -10,7 +10,7 @@
           "style": "scss"
         }
       },
-      "root": "e2e",
+      "root": "",
       "sourceRoot": "src",
       "prefix": "app",
       "architect": {
@@ -63,6 +63,9 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "proxyConfig": "./proxy.conf.json"
+          },
           "configurations": {
             "production": {
               "browserTarget": "feral:build:production"
