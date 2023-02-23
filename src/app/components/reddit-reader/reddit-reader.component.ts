@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RedditService } from '../services/reddit.service';
 
 @Component({
   selector: 'app-reddit-reader',
@@ -8,9 +7,4 @@ import { RedditService } from '../services/reddit.service';
 })
 export class RedditReaderComponent {
 
-  redditService: RedditService;
-  
-  constructor (redditService: RedditService) {
-    this.redditService = redditService;
-  }
 }
