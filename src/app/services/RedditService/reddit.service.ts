@@ -14,4 +14,12 @@ export class RedditService {
     const req = httpClient.post<InitResponse>(API_CONSTANTS.apiInitUrl, {})
     req.subscribe(response => this.init = response.success)
   }
+
+  getSubreddits() {
+    
+  }
+
+  getPostsFromSubreddit() {
+
+  }
 }
