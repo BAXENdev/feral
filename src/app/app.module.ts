@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RedditReaderComponent } from './components/reddit-reader/reddit-reader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSidenavModule } from '@angular/material/sidenav'
-import {MatInputModule} from '@angular/material/input';
+// import { MatSidenavModule } from '@angular/material/sidenav';
+// import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -19,8 +19,8 @@ import {MatInputModule} from '@angular/material/input';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatSidenavModule,
-    MatInputModule
+    // MatSidenavModule,
+    // MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

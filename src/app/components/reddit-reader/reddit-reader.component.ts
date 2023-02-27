@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Subreddit } from 'src/app/interfaces/RedditService/subreddit';
 import { RedditService } from 'src/app/services/RedditService/reddit.service';
 
 @Component({
@@ -8,6 +9,12 @@ import { RedditService } from 'src/app/services/RedditService/reddit.service';
 })
 export class RedditReaderComponent {
 
-  constructor (public redditService: RedditService) {}
+  subreddits: Subreddit[] = []
+
+  constructor (private redditService: RedditService) {}
+
+  getSubreddits() {
+    this.subreddits = this.redditService.getSubreddits()
+  }
 
 }
