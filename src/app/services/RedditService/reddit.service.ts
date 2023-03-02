@@ -1,25 +1,38 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { API_CONSTANTS } from 'src/app/config/constants';
 import { InitResponse } from 'src/app/interfaces/initResponse';
+import { PostList } from 'src/app/interfaces/redditService/post-list';
+import { SubredditList } from 'src/app/interfaces/redditService/subreddit-list';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RedditService {
 
-  init: string
+  initSuccess: string
 
   constructor(private httpClient: HttpClient) {
     const req = httpClient.post<InitResponse>(API_CONSTANTS.apiInitUrl, {})
-    req.subscribe(response => this.init = response.success)
+    req.subscribe(response => this.initSuccess = response.success)
   }
 
   getSubreddits() {
     
   }
 
-  getPostsFromSubreddit() {
+  getPostsFromSubreddit(subredditUrl: string, limit: number, where: string, after: string) {
+    let req = this.httpClient.get<PostList>(API_CONSTANTS.apiRedditPostsFromSubredditUrl, {params:{"subreddit":subredditUrl, "limit":limit, "where":where, "after":after}})
+    return req
+  }
 
+  getSearchSubreddits(query: string, limit: number, after: string) : Observable<SubredditList> {
+    let req = this.httpClient.get<SubredditList>(API_CONSTANTS.apiRedditSearchSubredditsUrl, {params:{"query":query, "limit":limit, "after":after}})
+      // .pipe(map(response => {
+      //   return response
+      // }))
+    return req
   }
 }

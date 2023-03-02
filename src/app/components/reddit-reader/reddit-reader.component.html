@@ -1,4 +1,39 @@
+<mat-form-field>
+  <mat-label>Search for Subreddits</mat-label>
+  <input #searchBox matInput type="text" (keydown.enter)="search(searchBox.value)">
+</mat-form-field>
 
-<!-- <mat-form-field class="redditSearch"></mat-form-field> -->
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Subreddits</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngFor="let subreddit of subredditList?.subreddits">
+      <mat-card>
+        <mat-card-subtitle>{{subreddit.url}}</mat-card-subtitle>
+        <mat-card-content>{{subreddit.description | slice:0:100}}</mat-card-content>
+        <mat-card-actions>
+          <button mat-button #hotposts (click)="posts(subreddit.url, 'hot')">Get Hot Posts</button>
+          <button mat-button #hotposts (click)="posts(subreddit.url, 'new')">Get New Posts</button>
+          <!-- <button mat-button #hotposts (click)="posts(subreddit.url, 'random')">Get Random Posts</button> -->
+          <button mat-button #hotposts (click)="posts(subreddit.url, 'rising')">Get Rising Posts</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
 
-<div class="posts"></div>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{postList?.subreddit_url ?? "Posts: No Subreddit Selected"}}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <ng-container *ngFor="let post of postList?.posts">
+      <mat-card>
+        <mat-card-subtitle>{{post.title}}</mat-card-subtitle>
+        <mat-card-content>{{post.selftext}}</mat-card-content>
+      </mat-card>
+    </ng-container>
+  </mat-card-content>
+</mat-card>
+
