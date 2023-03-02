@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
 import { API_CONSTANTS } from 'src/app/config/constants';
+import { Subreddit } from 'src/app/interfaces/RedditService/subreddit';
+import { SubredditList } from 'src/app/interfaces/RedditService/subreddit-list';
 import { InitResponse } from 'src/app/interfaces/initResponse';
 import { PostList } from 'src/app/interfaces/redditService/post-list';
 import { SubredditList } from 'src/app/interfaces/redditService/subreddit-list';
@@ -20,7 +22,10 @@ export class RedditService {
   }
 
   getSubreddits() {
-    
+    const req = this.httpClient.get<SubredditList>(API_CONSTANTS.apiRedditSubredditsUrl)
+    let subreddits: Subreddit[] = []
+    req.subscribe(response => subreddits = response.subreddits)
+    return subreddits
   }
 
   getPostsFromSubreddit(subredditUrl: string, limit: number, where: string, after: string) {
