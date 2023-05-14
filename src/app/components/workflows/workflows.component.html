@@ -1,0 +1,25 @@
+<h2>Workflows</h2>
+
+<ng-container *ngFor="let workflow of workflowLog?.workflowList">
+  <mat-card>
+    <mat-card-title>{{workflow.workflowName}}</mat-card-title>
+    <mat-card-actions>
+      <button mat-button (click)="openWorkflow(workflow)">Open</button>
+    </mat-card-actions>
+    <!-- <mat-card-content>
+      <mat-card-subtitle>Scripts</mat-card-subtitle>
+      <ng-container *ngFor="let scriptTitle of workflow.scripts">
+        <mat-list-item>{{scriptTitle}}</mat-list-item>
+      </ng-container>
+      <mat-card-subtitle>AudioFiles</mat-card-subtitle>
+      <ng-container *ngFor="let audioFilePath of workflow.audios">
+        <mat-list-item>{{audioFilePath}}</mat-list-item>
+      </ng-container>
+      <mat-card-subtitle>Video Files</mat-card-subtitle>
+      <ng-container *ngFor="let videoFilePath of workflow.videos">
+        <mat-list-item>{{videoFilePath}}</mat-list-item>
+      </ng-container>
+    </mat-card-content> -->
+  </mat-card>
+</ng-container>
+<!-- <button mat-button (click)="openWorkflow(workflow)">Open</button> -->

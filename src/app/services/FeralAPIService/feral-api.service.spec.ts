@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { WorkflowService } from './workflow.service';
+import { FeralApiService } from './feral-api.service';
 
-describe('WorkflowService', () => {
-  let service: WorkflowService;
+describe('FeralApiService', () => {
+  let service: FeralApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(WorkflowService);
+    service = TestBed.inject(FeralApiService);
   });
 
   it('should be created', () => {

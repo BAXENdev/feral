@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FeralApiService } from './services/FeralAPIService/feral-api.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   public title = 'feral';
+
+  constructor(private feralAPIService: FeralApiService) {
+    feralAPIService.init()
+  }
 }

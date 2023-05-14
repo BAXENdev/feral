@@ -1,0 +1,29 @@
+
+<!-- <ng-container ngIf="workflow"> -->
+  <mat-card>
+    <mat-card-title>{{workflow?.workflowName}}</mat-card-title>
+    <mat-card-content>
+      <mat-card-subtitle>Scripts</mat-card-subtitle>
+      <!-- <ng-container [ngIf]="!workflow?.scripts">
+        Heyyo
+      </ng-container> -->
+      <ng-container *ngFor="let scriptTitle of workflow?.scripts">
+        <mat-list-item>{{scriptTitle}}</mat-list-item>
+        <!-- <mat-card-actions>
+          <button mat-button (click)="openScript(scriptTitle)">Edit Script</button>
+        </mat-card-actions> -->
+        <button mat-button (click)="createVideo(workflow?.workflowName || '', scriptTitle)">Create Video</button><br>
+      </ng-container>
+      <mat-card-subtitle>AudioFiles</mat-card-subtitle>
+      <ng-container *ngFor="let audioFilePath of workflow?.audios">
+        <mat-list-item>{{audioFilePath}}</mat-list-item>
+      </ng-container>
+      <mat-card-subtitle>Video Files</mat-card-subtitle>
+      <ng-container *ngFor="let videoFilePath of workflow?.videos">
+        <mat-list-item>{{videoFilePath}}</mat-list-item>
+        <button mat-button (click)="uploadVideo(workflow?.workflowName || '', videoFilePath)">Upload Video</button><br>
+      </ng-container>
+    </mat-card-content>
+  </mat-card>
+  <button mat-button (click)="createScript()">Create Script</button>
+<!-- </ng-container> -->
